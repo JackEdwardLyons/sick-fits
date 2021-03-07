@@ -1,0 +1,10 @@
+node_modules
+
+# binaries
+bin/
+dist/
+lib/
+
+# editors
+*.swp
+.DS_Store
