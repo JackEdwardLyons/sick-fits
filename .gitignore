@@ -5,6 +5,7 @@ bin/
 dist/
 lib/
 
+frontend/.next
 # editors
 *.swp
 .DS_Store
