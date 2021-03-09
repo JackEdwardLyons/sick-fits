@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Nav from './Nav'
@@ -8,7 +8,7 @@ const Logo = styled.h1`
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  background: red;
+  background: var(--red);
   transform: skew(-7deg);
 
   a {
@@ -35,7 +35,7 @@ const HeaderStyles = styled.header`
   }
 `
 
-const Header: React.FC = () => (
+const Header: FC = () => (
   <HeaderStyles>
     <div className="bar">
       <Logo>

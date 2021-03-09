@@ -80,6 +80,7 @@
       }
     },
     "rules": {
+      "react/prop-types": 1,
       "react/jsx-filename-extension": [
         2,
         {

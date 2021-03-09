@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import React from 'react'
+import { FC } from 'react'
 
-const Nav: React.FC = () => (
+const Nav: FC = () => (
   <nav>
     <Link href="/products">Products</Link>
     <Link href="/sell">Sell</Link>
