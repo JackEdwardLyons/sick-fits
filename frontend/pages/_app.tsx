@@ -1,13 +1,16 @@
 import type { AppProps /* , AppContext */ } from 'next/app'
+import useRouteProgressBar from '../hooks/useRouteProgressBar'
 import Page from '../components/Page'
+import '../components/styles/nprogress.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useRouteProgressBar()
+
   return (
     <Page>
       <Component {...pageProps} />
     </Page>
   )
-  // eslint-disable-next-line react/jsx-props-no-spreading
 }
 
 // Only uncomment this method if you have blocking data requirements for
