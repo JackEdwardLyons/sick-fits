@@ -1,9 +1,11 @@
+import ProductsPage from './products'
+
 function IndexPage() {
   return (
     <section>
-      <h1>Index page</h1>
+      <ProductsPage />
     </section>
-  );
+  )
 }
 
-export default IndexPage;
+export default IndexPage

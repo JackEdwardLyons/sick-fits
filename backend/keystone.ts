@@ -11,7 +11,7 @@ const databaseURL = process.env.DATABASE_URL || "mongodb://localhost/keystone-si
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
-  secret: process.env.COOKIE_SECRET,
+  secret: process.env.COOKIE_SECRET || "",
 };
 
 const { withAuth } = createAuth({
@@ -29,7 +29,7 @@ export default withAuth(
     // @ts-ignore
     server: {
       cors: {
-        origin: [process.env.FRONTEND_URL],
+        origin: [process.env.FRONTEND_URL || "http://localhost:7777"],
         credentials: true,
       },
     },
