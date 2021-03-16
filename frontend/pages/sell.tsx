@@ -1,9 +1,9 @@
-function SellPage() {
+import CreateProduct from '../components/CreateProduct'
+
+export default function SellPage() {
   return (
     <section>
-      <h1>Sell page</h1>
+      <CreateProduct />
     </section>
   )
 }
-
-export default SellPage
