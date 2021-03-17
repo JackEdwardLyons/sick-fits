@@ -1,30 +1,43 @@
 import React from 'react'
+import { useMutation } from '@apollo/client'
 import useForm from '../hooks/useForm'
 import FormStyles from './styles/FormStyles'
+import { CREATE_PRODUCT_MUTATION } from '../mutations'
+import DisplayError from './ErrorMessage'
 
 export default function CreateProduct() {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
-    name: 'Nice shoes',
-    price: 1234,
-    description: 'These are nice shoes',
+    image: '',
+    name: 'Nice Shoes',
+    price: 34234,
+    description: 'These are the best shoes!',
   })
-
-  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    console.log(inputs)
-  }
-
+  const [createProduct, { loading, error }] = useMutation(
+    CREATE_PRODUCT_MUTATION,
+    {
+      variables: inputs,
+    }
+  )
   return (
-    <FormStyles onSubmit={handleSubmit}>
-      <fieldset>
+    <FormStyles
+      onSubmit={async (e) => {
+        e.preventDefault()
+        console.log(inputs)
+        // Submit the inputfields to the backend:
+        await createProduct()
+        clearForm()
+      }}
+    >
+      <DisplayError error={error} />
+      <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="image">
           Image
           <input
+            required
             type="file"
             id="image"
             name="image"
-            onChange={(event) => handleChange(event)}
+            onChange={handleChange}
           />
         </label>
         <label htmlFor="name">
@@ -35,10 +48,9 @@ export default function CreateProduct() {
             name="name"
             placeholder="Name"
             value={inputs.name}
-            onChange={(event) => handleChange(event)}
+            onChange={handleChange}
           />
         </label>
-
         <label htmlFor="price">
           Price
           <input
@@ -47,30 +59,34 @@ export default function CreateProduct() {
             name="price"
             placeholder="price"
             value={inputs.price}
-            onChange={(event) => handleChange(event)}
+            onChange={handleChange}
           />
         </label>
-
         <label htmlFor="description">
           Description
           <textarea
             id="description"
             name="description"
-            placeholder="description"
+            placeholder="Description"
             value={inputs.description}
-            onChange={(event) => handleChange(event)}
+            onChange={handleChange}
           />
         </label>
 
-        <button type="submit">+ Add Product</button>
-
-        <button type="button" onClick={() => clearForm()}>
-          Clear form
-        </button>
-
-        <button type="button" onClick={() => resetForm()}>
-          Reset form
-        </button>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <button type="submit">+ Add Product</button>
+          <button type="button" onClick={() => clearForm()}>
+            Clear Form
+          </button>
+          <button type="button" onClick={() => resetForm()}>
+            Reset Form
+          </button>
+        </div>
       </fieldset>
     </FormStyles>
   )

@@ -11,9 +11,7 @@ type FormValueType = { value: any; name: string; type: string }
 export default function useForm(initial = {}) {
   const [inputs, setInputs] = useState<{ [key: string]: any }>(initial)
 
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): void {
+  function handleChange(event: React.ChangeEvent<any>): void {
     let { value, name, type }: FormValueType = event.target
 
     if (type === 'number') {
@@ -21,7 +19,8 @@ export default function useForm(initial = {}) {
     }
 
     if (type === 'file') {
-      value = event.target.files
+      // eslint-disable-next-line prefer-destructuring
+      value = event.target.files[0]
     }
 
     setInputs({

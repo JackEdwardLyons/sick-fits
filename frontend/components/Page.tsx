@@ -8,8 +8,16 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+
   :root {
-    --red: #ff0000;
+
+
+    --darken: hsl(0, 100%, calc(50% - 20%));
+    
+    --red: hsl(0, 100%, 50%);
+    --darkRed:  var(--color-primary-darkest);
+    
+    
     --black: #393939;
     --grey: #3A3A3A;
     --gray: var(--grey);
@@ -21,6 +29,7 @@ const GlobalStyles = createGlobalStyle`
     --fontStack: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
   }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -44,6 +53,11 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     font-family: var(--fontStack);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--darken);
+    }
   }
 `
 

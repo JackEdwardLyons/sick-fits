@@ -7,7 +7,6 @@ export const ALL_PRODUCTS_QUERY = gql`
       id
       price
       description
-      status
       photo {
         id
         image {
