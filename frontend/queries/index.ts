@@ -8,6 +8,7 @@ export const ALL_PRODUCTS_QUERY = gql`
       price
       description
       photo {
+        altText
         id
         image {
           publicUrlTransformed
@@ -23,8 +24,10 @@ export const SINGLE_PRODUCT_QUERY = gql`
       name
       id
       price
+      description
       photo {
         id
+        altText
         image {
           publicUrlTransformed
         }

@@ -11,7 +11,7 @@ export default function Product({ product }: { product: ProductType }) {
     <ItemStyles>
       <Image
         src={product.photo.image.publicUrlTransformed}
-        alt={product.name}
+        alt={product.photo.altText}
         height={800}
         width={1000}
         layout="responsive"
