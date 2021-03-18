@@ -1,3 +1,4 @@
+import React from 'react'
 import type { AppProps /* , AppContext */ } from 'next/app'
 import { ApolloProvider, ApolloClient } from '@apollo/client'
 import useRouteProgressBar from '../hooks/useRouteProgressBar'
@@ -5,11 +6,11 @@ import Page from '../components/Page'
 import withData from '../lib/withData'
 import '../components/styles/nprogress.css'
 
-function MyApp({
-  Component,
-  pageProps,
-  apollo,
-}: AppProps & { apollo: ApolloClient<any> }) {
+interface Props {
+  apollo: ApolloClient<{}>
+}
+
+function MyApp({ Component, pageProps, apollo }: AppProps & Props) {
   useRouteProgressBar()
 
   return (
@@ -25,14 +26,14 @@ function MyApp({
 // every single page in your application. This disables the ability to
 // perform automatic static optimization, causing every page in your app to
 // be server-side rendered.
-MyApp.getInitialProps = async ({ Component, context }) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
+MyApp.getInitialProps = async function ({ Component, ctx }) {
+  let pageProps = {}
   if (Component.getInitialProps) {
-    const appProps = await Component.getInitialProps(context)
-    appProps.query = context.query
-
-    return { ...appProps }
+    pageProps = await Component.getInitialProps(ctx)
   }
+
+  pageProps.query = ctx.query
+  return { pageProps }
 }
 
 export default withData(MyApp)

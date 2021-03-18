@@ -1,5 +1,6 @@
 import React from 'react'
 import { useMutation } from '@apollo/client'
+import Router from 'next/router'
 import useForm from '../hooks/useForm'
 import FormStyles from './styles/FormStyles'
 import { CREATE_PRODUCT_MUTATION } from '../mutations'
@@ -12,22 +13,28 @@ export default function CreateProduct() {
     price: 34234,
     description: 'These are the best shoes!',
   })
+
   const [createProduct, { loading, error }] = useMutation(
-    CREATE_PRODUCT_MUTATION,
-    {
-      variables: inputs,
-    }
+    CREATE_PRODUCT_MUTATION
   )
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // Submit the inputfields to the backend:
+    const response = await createProduct({
+      variables: inputs,
+    })
+
+    console.log(response)
+    clearForm()
+
+    Router.push({
+      pathname: `/product/${response.data.createProduct.id}`,
+    })
+  }
+
   return (
-    <FormStyles
-      onSubmit={async (e) => {
-        e.preventDefault()
-        console.log(inputs)
-        // Submit the inputfields to the backend:
-        await createProduct()
-        clearForm()
-      }}
-    >
+    <FormStyles onSubmit={(e) => onSubmit(e)}>
       <DisplayError error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="image">

@@ -10,14 +10,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   :root {
-
-
-    --darken: hsl(0, 100%, calc(50% - 20%));
-    
     --red: hsl(0, 100%, 50%);
-    --darkRed:  var(--color-primary-darkest);
-    
-    
+    --darkRed: hsl(0, 100%, calc(50% - 20%));
     --black: #393939;
     --grey: #3A3A3A;
     --gray: var(--grey);
@@ -56,7 +50,7 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
 
     &:hover {
-      background: var(--darken);
+      background: var(--darkRed);
     }
   }
 `
