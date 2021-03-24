@@ -1,10 +1,5 @@
 import SingleProduct from '../../components/SingleProduct'
-
-type SingleProductProps = {
-  query: {
-    id: string
-  }
-}
+import { SingleProductProps } from '../../types/product-types'
 
 const SingleProductPage = ({ query }: SingleProductProps) => (
   <SingleProduct id={query.id} />

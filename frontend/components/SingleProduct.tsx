@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import { useQuery } from '@apollo/client'
 import styled from 'styled-components'
 import { SINGLE_PRODUCT_QUERY } from '../queries'
@@ -39,10 +40,15 @@ const SingleProduct = ({ id }: { id: string }) => {
         <Head>
           <title>Sick Fits | {Product.name}</title>
         </Head>
-        <img
-          src={Product.photo.image.publicUrlTransformed}
-          alt={Product.photo.altText}
-        />
+        {Product?.photo && (
+          <Image
+            src={Product.photo.image.publicUrlTransformed}
+            alt={Product.name}
+            height={800}
+            width={1000}
+            layout="responsive"
+          />
+        )}
         <div className="details">
           <h2>{Product.name}</h2>
           <p>{Product.description}</p>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type FormValueType = { value: any; name: string; type: string }
 
@@ -10,6 +10,11 @@ type FormValueType = { value: any; name: string; type: string }
  */
 export default function useForm(initial = {}) {
   const [inputs, setInputs] = useState<{ [key: string]: any }>(initial)
+  const initialValues = Object.values(initial).join('')
+
+  useEffect(() => {
+    setInputs(initial)
+  }, [initialValues])
 
   function handleChange(event: React.ChangeEvent<any>): void {
     let { value, name, type }: FormValueType = event.target

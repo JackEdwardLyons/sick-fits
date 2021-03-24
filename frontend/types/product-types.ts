@@ -1,3 +1,9 @@
+export type SingleProductProps = {
+  query: {
+    id: string
+  }
+}
+
 type CloudinaryImage_File = {
   id: string
   path: string
