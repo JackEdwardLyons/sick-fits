@@ -7,7 +7,7 @@ import { ProductType } from '../types/product-types'
 import formatMoney from '../lib/formatMoney'
 import DeleteProduct from './DeleteProduct'
 
-export default function Product({ product }: { product: ProductType }) {
+export default function Products({ product }: { product: ProductType }) {
   return (
     <ItemStyles>
       {product?.photo && (

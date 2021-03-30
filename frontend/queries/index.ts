@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const ALL_PRODUCTS_QUERY = gql`
-  query ALL_PRODUCTS_QUERY {
-    allProducts {
+  query ALL_PRODUCTS_QUERY($skip: Int = 0, $first: Int) {
+    allProducts(first: $first, skip: $skip) {
       name
       id
       price
@@ -32,6 +32,14 @@ export const SINGLE_PRODUCT_QUERY = gql`
           publicUrlTransformed
         }
       }
+    }
+  }
+`
+
+export const PRODUCT_COUNT_QUERY = gql`
+  query PRODUCT_COUNT_QUERY {
+    _allProductsMeta {
+      count
     }
   }
 `
