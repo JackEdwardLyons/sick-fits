@@ -43,3 +43,15 @@ export const PRODUCT_COUNT_QUERY = gql`
     }
   }
 `
+
+export const AUTHENTICATED_USER_QUERY = gql`
+  query AUTHENTICATED_USER_QUERY {
+    authenticatedItem {
+      ... on User {
+        name
+        email
+        id
+      }
+    }
+  }
+`
