@@ -9,6 +9,9 @@ const Nav: FC = () => {
   return (
     <NavStyles>
       <Link href="/products">Products</Link>
+
+      {!user && <Link href="/signin">Sign in</Link>}
+
       {user && (
         <>
           <Link href="/sell">Sell</Link>

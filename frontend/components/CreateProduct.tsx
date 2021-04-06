@@ -25,7 +25,6 @@ export default function CreateProduct() {
       variables: inputs,
     })
 
-    console.log(response)
     clearForm()
 
     Router.push({
