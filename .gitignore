@@ -5,7 +5,6 @@ node_modules
 # binaries
 bin/
 dist/
-lib/
 
 frontend/.next
 # editors
