@@ -48,10 +48,6 @@ const GlobalStyles = createGlobalStyle`
   button {
     font-family: var(--fontStack);
     cursor: pointer;
-
-    &:hover {
-      background: var(--darkRed);
-    }
   }
 `
 

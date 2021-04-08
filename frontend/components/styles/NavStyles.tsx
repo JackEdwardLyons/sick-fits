@@ -9,7 +9,7 @@ const NavStyles = styled.ul`
   a,
   button {
     padding: 1rem 3rem;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     position: relative;
     text-transform: uppercase;
