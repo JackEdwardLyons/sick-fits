@@ -8,7 +8,10 @@ import DisplayError from './ErrorMessage'
 import { FormStyles } from './styles/FormStyles'
 
 const SignIn: React.FC = () => {
-  const { inputs, handleChange, clearForm } = useForm()
+  const { inputs, handleChange, clearForm } = useForm({
+    email: '',
+    password: '',
+  })
   const [signIn, { data, loading }] = useMutation(SIGNIN_MUTATION, {
     variables: inputs,
     refetchQueries: [{ query: AUTHENTICATED_USER_QUERY }],

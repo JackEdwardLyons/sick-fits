@@ -49,6 +49,21 @@ export const DELETE_PRODUCT_MUTATION = gql`
   }
 `
 
+export const SIGNUP_MUTATION = gql`
+  mutation SIGNUP_MUTATION(
+    $email: String!
+    $password: String!
+    $name: String!
+  ) {
+    createUser(data: { email: $email, password: $password, name: $name }) {
+      id
+      name
+      email
+      password_is_set
+    }
+  }
+`
+
 export const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
     authenticateUserWithPassword(email: $email, password: $password) {

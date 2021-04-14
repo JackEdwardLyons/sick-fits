@@ -11,6 +11,7 @@ const ErrorStyles = styled.div`
   p {
     margin: 0;
     font-weight: 100;
+    /* word-break: break-all; */
   }
   strong {
     margin-right: 1rem;
