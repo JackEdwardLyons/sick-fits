@@ -88,3 +88,12 @@ export const SIGNOUT_MUTATION = gql`
     endSession
   }
 `
+
+export const REQUEST_PASSWORD_RESET_MUTATION = gql`
+  mutation REQUEST_PASSWORD_RESET_MUTATION($email: String!) {
+    sendUserPasswordResetLink(email: $email) {
+      code
+      message
+    }
+  }
+`
